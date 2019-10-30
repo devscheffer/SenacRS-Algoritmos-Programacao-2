@@ -72,7 +72,7 @@
                               <Component id="txtPreco" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Component id="DropdownCategoria" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                      <Component id="DropdownCategoria" alignment="0" min="-2" pref="182" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -108,7 +108,7 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnSalvar" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace pref="56" max="32767" attributes="0"/>
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

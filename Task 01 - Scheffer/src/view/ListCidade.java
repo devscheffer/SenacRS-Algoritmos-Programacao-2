@@ -5,57 +5,45 @@
  */
 package view;
 
-import dao.ProdutoDAO;
+import dao.CidadeDAO;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Cliente;
-import model.Produto;
+import model.Cidade;
 
 
 /**
  *
  * @author assparremberger
  */
-public class ListProduto extends javax.swing.JInternalFrame {
+public class ListCidade extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form ListClientes
      */
-    public ListProduto() {
+    public ListCidade() {
         initComponents();
         carregarTabela();
-        
     }
-    
-    
-    
 
     private void carregarTabela() {
-        List<Produto> lista = ProdutoDAO.getProdutos();
+        List<?> lista;
         DefaultTableModel model = new DefaultTableModel();
-        String[] colunas = {"Id","Nome","preço","quantidade","Categoria"};
-       
+        String[] colunas = {"Id", "Cidade"};
+        lista = CidadeDAO.getCidade();
             
         model.setColumnIdentifiers(colunas);
-        
-        for (Produto prod : lista) {
-            
-        
-       
-            Object[] linha ={
-                    prod.getId(),
-                    prod.getNome()
-                    ,prod.getPreco()
-                    ,prod.getQtd()
-                    ,prod.getCategoria().getNome()
-            };         
+        for (Object cit : lista) {
+            Object[] linha = {};
+
+            linha = new Object[]{
+                    cit.getId()
+                    ,cit.getNome() 
+                };
             model.addRow( linha );
-            
         }
         
-        
-        tableProdutos.setModel( model );
+        tableCidade.setModel( model );
     }
 
     /**
@@ -69,10 +57,8 @@ public class ListProduto extends javax.swing.JInternalFrame {
 
         buttonGroupTipo = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableProdutos = new javax.swing.JTable();
+        tableClientes = new javax.swing.JTable();
         btnExcluir = new javax.swing.JButton();
-        DropdownFilterCategoria = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -80,7 +66,7 @@ public class ListProduto extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Lista de Clientes");
 
-        tableProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "Maria"},
                 {"2", "João"}
@@ -89,7 +75,7 @@ public class ListProduto extends javax.swing.JInternalFrame {
                 "Código", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(tableProdutos);
+        jScrollPane1.setViewportView(tableClientes);
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -98,41 +84,21 @@ public class ListProduto extends javax.swing.JInternalFrame {
             }
         });
 
-        DropdownFilterCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        DropdownFilterCategoria.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                DropdownFilterCategoriaItemStateChanged(evt);
-            }
-        });
-
-        jLabel1.setText("Categoria");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28)
-                        .addComponent(DropdownFilterCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnExcluir)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DropdownFilterCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addGap(48, 48, 48)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -145,34 +111,28 @@ public class ListProduto extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int linha = tableProduto.getSelectedRow();   
+        int linha = tableClientes.getSelectedRow();   
         if( linha < 0 ){
             JOptionPane.showMessageDialog(this, 
-                "Você deve selecionar um produto!");
+                "Você deve selecionar um cliente!");
         }else{
-            int id = (int) tableProduto.getValueAt(linha, 0);
-            String nome = (String) tableProduto.getValueAt(linha, 1);
+            int id = (int) tableClientes.getValueAt(linha, 0);
+            String nome = (String) tableClientes.getValueAt(linha, 1);
             int resposta = JOptionPane.showConfirmDialog(this, 
-                    "Confirma a exclusão do produto " + nome + "?", 
-                    "Excluir Produto", JOptionPane.YES_NO_OPTION);
+                    "Confirma a exclusão do cliente " + nome + "?", 
+                    "Excluir Cliente", JOptionPane.YES_NO_OPTION);
             if( resposta == JOptionPane.YES_OPTION ){
-                ProdutoDAO.excluir( id );
+                ClienteDAO.excluir( id );
                 carregarTabela();
             }
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    private void DropdownFilterCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_DropdownFilterCategoriaItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DropdownFilterCategoriaItemStateChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> DropdownFilterCategoria;
     private javax.swing.JButton btnExcluir;
     private javax.swing.ButtonGroup buttonGroupTipo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableProdutos;
+    private javax.swing.JTable tableClientes;
     // End of variables declaration//GEN-END:variables
 }

@@ -37,9 +37,9 @@ public class ProdutoDAO {
                     + " WHERE id = " + prod.getId();
         Conexao.executar( query );
     }
-    
-    public static List<Categoria> getCategoria(){
-        List<Categoria> lista = new ArrayList<>();
+    /*Arrumar para produto Inicio*/
+    public static List<Produto> getProdutos(){
+        List<Produto> lista = new ArrayList<>();
         String query = "SELECT id, nome "
                      + " FROM categoria ORDER BY nome ";
         ResultSet rs = Conexao.consultar(query);
@@ -49,7 +49,13 @@ public class ProdutoDAO {
                     Categoria cat = new Categoria();
                     cat.setId( rs.getInt( 1 ) );
                     cat.setNome( rs.getString( 2 ) );
-                    lista.add( cat );
+                    
+                    Produto prod = new Produto();
+                    prod.setCategoria(cat);
+                    /*fazer os set*/
+                    
+                    
+                    lista.add( prod );
                 }
             } catch (Exception e) {
             }
@@ -57,7 +63,7 @@ public class ProdutoDAO {
         return lista;
     }
     
-    public static Categoria getCategoriaById( int idCategoria ){
+    public static Categoria getProdutoById( int idCategoria ){
         String query = "SELECT id, nome "
                      + " FROM categoria "
                      + " WHERE id = " + idCategoria;
@@ -76,5 +82,5 @@ public class ProdutoDAO {
             return null;
         }
     }
-       
+        /*Arrumar para produto Fim*/
 }
