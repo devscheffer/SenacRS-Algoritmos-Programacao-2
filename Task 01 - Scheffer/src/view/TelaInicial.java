@@ -224,6 +224,9 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void jMenuItemCategoriaCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaCadastrarActionPerformed
         // TODO add your handling code here:
+        FrmCategoria tela = new FrmCategoria();
+        jdpPainelInicial.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_jMenuItemCategoriaCadastrarActionPerformed
 
     private void jMenuItemCategoriaListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaListarActionPerformed
@@ -232,10 +235,14 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void jMenuItemProdutoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoCadastrarActionPerformed
         // TODO add your handling code here:
+        FrmProduto tela = new FrmProduto();
+        jdpPainelInicial.add(tela);
+        tela.setVisible(true);
     }//GEN-LAST:event_jMenuItemProdutoCadastrarActionPerformed
 
     private void jMenuItemProdutoListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoListarActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jMenuItemProdutoListarActionPerformed
 
     /**
