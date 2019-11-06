@@ -40,8 +40,9 @@ public class ProdutoDAO {
     /*Arrumar para produto Inicio*/
     public static List<Produto> getProdutos(){
         List<Produto> lista = new ArrayList<>();
-        String query = "SELECT id, nome "
-                     + " FROM categoria ORDER BY nome ";
+        String query = "SELECT id, nome, preco, quantidade, codCategoria "
+                     + " FROM produto left join categoria"
+                     + " on produto.codCategoria = categoria.codCategoria ORDER BY nome ";
         ResultSet rs = Conexao.consultar(query);
         if( rs != null ){
             try {
@@ -52,9 +53,11 @@ public class ProdutoDAO {
                     
                     Produto prod = new Produto();
                     prod.setCategoria(cat);
+                    prod.setNome(query);
+                    prod.setPreco(0);
+                    prod.setQtd(0);
                     /*fazer os set*/
-                    
-                    
+  
                     lista.add( prod );
                 }
             } catch (Exception e) {
