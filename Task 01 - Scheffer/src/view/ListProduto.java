@@ -44,8 +44,8 @@ public class ListProduto extends javax.swing.JInternalFrame {
         
        
             Object[] linha ={
-                    prod.getId(),
-                    prod.getNome()
+                    prod.getId()
+                    ,prod.getNome()
                     ,prod.getPreco()
                     ,prod.getQtd()
                     ,prod.getCategoria().getNome()

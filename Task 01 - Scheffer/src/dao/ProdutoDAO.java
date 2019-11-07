@@ -40,24 +40,22 @@ public class ProdutoDAO {
     /*Arrumar para produto Inicio*/
     public static List<Produto> getProdutos(){
         List<Produto> lista = new ArrayList<>();
-        String query = "SELECT id, nome, preco, quantidade, codCategoria "
-                     + " FROM produto left join categoria"
-                     + " on produto.codCategoria = categoria.codCategoria ORDER BY nome ";
+        String query = "SELECT p.id, p.nome, p.preco, p.quantidade, c.id, c.nome"
+                     + " FROM produto p inner join categoria c"
+                     + " on p.codCategoria = c.id ORDER BY p.nome ";
         ResultSet rs = Conexao.consultar(query);
         if( rs != null ){
             try {
                 while ( rs.next() ) {                    
                     Categoria cat = new Categoria();
-                    cat.setId( rs.getInt( 1 ) );
-                    cat.setNome( rs.getString( 2 ) );
+                    cat.setId( rs.getInt( 5 ) );
+                    cat.setNome( rs.getString( 6 ) );
                     
                     Produto prod = new Produto();
                     prod.setCategoria(cat);
-                    prod.setNome(query);
-                    prod.setPreco(0);
-                    prod.setQtd(0);
-                    /*fazer os set*/
-  
+                    prod.setNome(rs.getString(2)); /*usar esse de exemplo para todos os set*/
+                    prod.setPreco(3);
+                    prod.setQtd(4);                 
                     lista.add( prod );
                 }
             } catch (Exception e) {
@@ -67,17 +65,25 @@ public class ProdutoDAO {
     }
     
     public static Categoria getProdutoById( int idCategoria ){
-        String query = "SELECT id, nome "
-                     + " FROM categoria "
-                     + " WHERE id = " + idCategoria;
+        String query = "SELECT id, produto.nome, preco, quantidade, categoria.id, categoria.nome"
+                     + " FROM produto left join categoria"
+                     + " on produto.codCategoria = categoria.id WHERE produto.id = "+idProduto;
+
         ResultSet rs = Conexao.consultar(query);
         if( rs != null ){
             try {
                 rs.next();                  
                     Categoria cat = new Categoria();
-                    cat.setId( rs.getInt( 1 ) );
-                    cat.setNome( rs.getString( 2 ) );
-                    return cat;
+                    cat.setId( rs.getInt( 5 ) );
+                    cat.setNome( rs.getString( 6 ) );
+                    
+                    Produto prod = new Produto();
+                    prod.setCategoria(cat);
+                    prod.setNome(2);
+                    prod.setPreco(3);
+                    prod.setQtd(4);     
+           
+                    return prod;
             } catch (Exception e) {
                 return null;
             }
@@ -85,5 +91,4 @@ public class ProdutoDAO {
             return null;
         }
     }
-        /*Arrumar para produto Fim*/
 }

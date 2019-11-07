@@ -114,15 +114,15 @@ public class ListCategoria extends javax.swing.JInternalFrame {
         int linha = tableClientes.getSelectedRow();   
         if( linha < 0 ){
             JOptionPane.showMessageDialog(this, 
-                "Você deve selecionar um cliente!");
+                "Você deve selecionar uma categoria!");
         }else{
             int id = (int) tableClientes.getValueAt(linha, 0);
             String nome = (String) tableClientes.getValueAt(linha, 1);
             int resposta = JOptionPane.showConfirmDialog(this, 
-                    "Confirma a exclusão do cliente " + nome + "?", 
-                    "Excluir Cliente", JOptionPane.YES_NO_OPTION);
+                    "Confirma a exclusão da categoria " + nome + "?", 
+                    "Excluir categoria", JOptionPane.YES_NO_OPTION);
             if( resposta == JOptionPane.YES_OPTION ){
-                ClienteDAO.excluir( id );
+                CategoriaDAO.excluir( id );
                 carregarTabela();
             }
         }
