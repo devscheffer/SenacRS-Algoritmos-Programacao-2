@@ -31,7 +31,7 @@ public class CidadeDAO {
         Conexao.executar( query );
     }
     
-    public static List<Cidade> getCidades(){
+    public static List<Cidade> getCidade(){
         List<Cidade> lista = new ArrayList<>();
         String query = "SELECT id, nome "
                      + " FROM cidades ORDER BY nome ";

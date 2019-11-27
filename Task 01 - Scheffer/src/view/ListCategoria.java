@@ -57,7 +57,7 @@ public class ListCategoria extends javax.swing.JInternalFrame {
 
         buttonGroupTipo = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableClientes = new javax.swing.JTable();
+        tableCategoria = new javax.swing.JTable();
         btnExcluir = new javax.swing.JButton();
 
         setClosable(true);
@@ -66,7 +66,7 @@ public class ListCategoria extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Lista de Clientes");
 
-        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tableCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "Maria"},
                 {"2", "João"}
@@ -75,7 +75,7 @@ public class ListCategoria extends javax.swing.JInternalFrame {
                 "Código", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(tableClientes);
+        jScrollPane1.setViewportView(tableCategoria);
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -107,21 +107,24 @@ public class ListCategoria extends javax.swing.JInternalFrame {
                 .addContainerGap(212, Short.MAX_VALUE))
         );
 
+        getAccessibleContext().setAccessibleName("Lista de Categoria");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int linha = tableClientes.getSelectedRow();   
+        int linha = tableCategoria.getSelectedRow();   
         if( linha < 0 ){
             JOptionPane.showMessageDialog(this, 
                 "Você deve selecionar uma categoria!");
         }else{
-            int id = (int) tableClientes.getValueAt(linha, 0);
-            String nome = (String) tableClientes.getValueAt(linha, 1);
+            int id = (int) tableCategoria.getValueAt(linha, 0);
+            String nome = (String) tableCategoria.getValueAt(linha, 1);
             int resposta = JOptionPane.showConfirmDialog(this, 
                     "Confirma a exclusão da categoria " + nome + "?", 
                     "Excluir categoria", JOptionPane.YES_NO_OPTION);
             if( resposta == JOptionPane.YES_OPTION ){
+                
                 CategoriaDAO.excluir( id );
                 carregarTabela();
             }
@@ -133,6 +136,6 @@ public class ListCategoria extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableClientes;
+    private javax.swing.JTable tableCategoria;
     // End of variables declaration//GEN-END:variables
 }

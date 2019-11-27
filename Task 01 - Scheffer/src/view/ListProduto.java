@@ -55,7 +55,7 @@ public class ListProduto extends javax.swing.JInternalFrame {
         }
         
         
-        tableProdutos.setModel( model );
+        tableProduto.setModel( model );
     }
 
     /**
@@ -69,7 +69,7 @@ public class ListProduto extends javax.swing.JInternalFrame {
 
         buttonGroupTipo = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableProdutos = new javax.swing.JTable();
+        tableProduto = new javax.swing.JTable();
         btnExcluir = new javax.swing.JButton();
         DropdownFilterCategoria = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -80,7 +80,7 @@ public class ListProduto extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Lista de Clientes");
 
-        tableProdutos.setModel(new javax.swing.table.DefaultTableModel(
+        tableProduto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "Maria"},
                 {"2", "João"}
@@ -89,7 +89,7 @@ public class ListProduto extends javax.swing.JInternalFrame {
                 "Código", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(tableProdutos);
+        jScrollPane1.setViewportView(tableProduto);
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -173,6 +173,6 @@ public class ListProduto extends javax.swing.JInternalFrame {
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableProdutos;
+    private javax.swing.JTable tableProduto;
     // End of variables declaration//GEN-END:variables
 }

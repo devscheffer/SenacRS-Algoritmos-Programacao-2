@@ -5,6 +5,13 @@
         <group>
             <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/view/ListProduto.java</file>
             <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/view/ListCategoria.java</file>
+            <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/model/Categoria.java</file>
+            <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/model/Cidade.java</file>
+            <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/view/FrmCliente.java</file>
+            <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/dao/CategoriaDAO.java</file>
+            <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/model/Produto.java</file>
+            <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/dao/CidadeDAO.java</file>
+            <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/view/ListClientes.java</file>
             <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/view/ListCidade.java</file>
             <file>file:/C:/Users/gerso/Desktop/New%20folder/SenacRS-Algoritmos-Programacao-II/Task%2001%20-%20Scheffer/src/dao/ProdutoDAO.java</file>
         </group>

@@ -41,7 +41,7 @@ public class FrmCliente extends javax.swing.JInternalFrame {
     private void carregarCidades(){
         
         List<Cidade> listaCidades = 
-                CidadeDAO.getCidades();
+                CidadeDAO.getCidade();
         DefaultComboBoxModel model = 
                 new DefaultComboBoxModel();
         Cidade fake = new Cidade();

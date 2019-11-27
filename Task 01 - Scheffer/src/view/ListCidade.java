@@ -58,16 +58,16 @@ public class ListCidade extends javax.swing.JInternalFrame {
 
         buttonGroupTipo = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableClientes = new javax.swing.JTable();
+        tableCidade = new javax.swing.JTable();
         btnExcluir = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Lista de Clientes");
+        setTitle("Lista de Cidade");
 
-        tableClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tableCidade.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"1", "Maria"},
                 {"2", "João"}
@@ -76,7 +76,7 @@ public class ListCidade extends javax.swing.JInternalFrame {
                 "Código", "Nome"
             }
         ));
-        jScrollPane1.setViewportView(tableClientes);
+        jScrollPane1.setViewportView(tableCidade);
 
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -112,18 +112,18 @@ public class ListCidade extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        int linha = tableClientes.getSelectedRow();   
+        int linha = tableCidade.getSelectedRow();   
         if( linha < 0 ){
             JOptionPane.showMessageDialog(this, 
                 "Você deve selecionar um cliente!");
         }else{
-            int id = (int) tableClientes.getValueAt(linha, 0);
-            String nome = (String) tableClientes.getValueAt(linha, 1);
+            int id = (int) tableCidade.getValueAt(linha, 0);
+            String nome = (String) tableCidade.getValueAt(linha, 1);
             int resposta = JOptionPane.showConfirmDialog(this, 
-                    "Confirma a exclusão do cliente " + nome + "?", 
-                    "Excluir Cliente", JOptionPane.YES_NO_OPTION);
+                    "Confirma a exclusão da cidade " + nome + "?", 
+                    "Excluir Cidade", JOptionPane.YES_NO_OPTION);
             if( resposta == JOptionPane.YES_OPTION ){
-                ClienteDAO.excluir( id );
+                CidadeDAO.excluir( id );
                 carregarTabela();
             }
         }
@@ -134,6 +134,6 @@ public class ListCidade extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.ButtonGroup buttonGroupTipo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableClientes;
+    private javax.swing.JTable tableCidade;
     // End of variables declaration//GEN-END:variables
 }

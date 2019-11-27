@@ -54,8 +54,8 @@ public class ProdutoDAO {
                     Produto prod = new Produto();
                     prod.setCategoria(cat);
                     prod.setNome(rs.getString(2)); /*usar esse de exemplo para todos os set*/
-                    prod.setPreco(3);
-                    prod.setQtd(4);                 
+                    prod.setPreco(rs.getDouble(3));
+                    prod.setQtd(rs.getInt(4));                 
                     lista.add( prod );
                 }
             } catch (Exception e) {
@@ -64,7 +64,7 @@ public class ProdutoDAO {
         return lista;
     }
     
-    public static Categoria getProdutoById( int idCategoria ){
+    public static Produto getProdutoById( int idProduto ){
         String query = "SELECT id, produto.nome, preco, quantidade, categoria.id, categoria.nome"
                      + " FROM produto left join categoria"
                      + " on produto.codCategoria = categoria.id WHERE produto.id = "+idProduto;
@@ -79,9 +79,9 @@ public class ProdutoDAO {
                     
                     Produto prod = new Produto();
                     prod.setCategoria(cat);
-                    prod.setNome(2);
-                    prod.setPreco(3);
-                    prod.setQtd(4);     
+                    prod.setNome(rs.getString(1));
+                    prod.setPreco(rs.getDouble(3));
+                    prod.setQtd(rs.getInt(4));     
            
                     return prod;
             } catch (Exception e) {
